@@ -4,6 +4,7 @@ import numpy as np
 import argparse
 
 def parse_equation(equation_string):
+    """Parse a string representing an equation of the form y=mx+c"""
     float_regex = "[-+]?(?:\d*\.\d+|\d+)"
     equation_regex = "y=(%s)?x(%s)?" % (float_regex, float_regex)
     re.compile(equation_regex)
@@ -17,7 +18,7 @@ def parse_equation(equation_string):
     return coeffcients
 
 def find_intersection(eq1_coefficients, eq2_coefficients):
-
+    """Find the intersection between two equations of the form y=mx+c"""
     a1, b1 = eq1_coefficients
     a2, b2 = eq2_coefficients
 
@@ -31,6 +32,7 @@ def find_intersection(eq1_coefficients, eq2_coefficients):
     return x,y
 
 def solve_equations(equation1, equation2):
+    """Solve two simultaneous equations of the form y=mx+c"""
     eq1_coefficients = parse_equation(equation1)
     eq2_coefficients = parse_equation(equation2)
     return find_intersection(eq1_coefficients, eq2_coefficients)
